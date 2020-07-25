@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux'
 import { remove, kill } from './duck/slice';
 import { fight } from '../history/duck/slice';
+import Button from '@material-ui/core/Button';
 
 const PlayerComponent = (props) => {
   const dispatch = useDispatch();
@@ -9,9 +10,15 @@ const PlayerComponent = (props) => {
   return(
     <div>
       <h4>{props.player.name}</h4>
-      <input type="button" value="remove" onClick={() => dispatch(remove(props.player))} />
-      <input type="button" value={props.player.alive ? 'kill' : 'not dead'} onClick={() => dispatch(kill(props.player))} />
-      <input type="button" value="fight" onClick={() => dispatch(fight(props.player))} />
+      <Button color="primary" onClick={() => dispatch(remove(props.player))} >Remove</Button>
+      <Button
+        className="m-1"
+        color={props.player.alive ? 'warning' : 'info'}
+        onClick={() => dispatch(kill(props.player))}
+      >
+        {props.player.alive ? 'Kill' : 'Not dead'}
+      </Button>
+      <Button className="m-1" value="fight" onClick={() => dispatch(fight(props.player))} > Fight </Button>
     </div>
   );
 }

@@ -12,6 +12,7 @@ const predict = (playerList, historyList) => {
 const PredictionListComponent = () => {
   const history = useSelector(selectHistory);
   const player = useSelector(selectAlive);
+  
   return(
     <div>
       <h4>Prediction</h4>
