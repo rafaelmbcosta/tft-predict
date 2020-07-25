@@ -9,21 +9,17 @@ export const playerSlice = createSlice({
   },
   reducers: {
     add: (state, action) => {
-      if (state.value.length < 8) {
+      if (state.value.length < 7) {
         state.value.push({ name: action.payload, alive: true, id: counter})
         counter++;
       }
     },
     remove: (state, action) => {
-      console.log(action.payload)
-      state.value = state.value.filter(element => {
-        if (element.id !== action.payload.id) { return element}
-      })
+      state.value = state.value.filter(element => (element.id !== action.payload.id))
     },
     kill: (state, action) => {
-      state.value = state.value.map(element => {
-        if (element.id == action.payload.id) { element.alive = !element.alive}
-        return element
+      state.value.forEach(element => {
+        if (element.id === action.payload.id) { element.alive = !element.alive}
       })
     }
   }
@@ -32,5 +28,9 @@ export const playerSlice = createSlice({
 export const { add, remove, kill } = playerSlice.actions;
 
 export const selectPlayer = state => state.player.value;
+
+export const selectAlive = state => {
+  return state.player.value.filter(player => player.alive) || []
+}
 
 export default playerSlice.reducer;

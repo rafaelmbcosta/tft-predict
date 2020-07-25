@@ -8,11 +8,17 @@ export const historySlice = createSlice({
     value: []
   },
   reducers: {
-
+    fight: (state, action) => {
+      state.value.push({ ...action.payload, id: counter, playerId: action.payload.id})
+      counter++;
+    },
+    remove: (state, action) => {
+      state.value = state.value.filter(element => (element.id !== action.payload.id))
+    }
   }
 });
 
-export const { add } = historySlice.actions;
+export const { fight, remove } = historySlice.actions;
 
 export const selectHistory = state => state.history.value;
 

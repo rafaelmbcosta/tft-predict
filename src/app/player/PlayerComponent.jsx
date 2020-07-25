@@ -9,12 +9,10 @@ const PlayerComponent = (props) => {
   return(
     <div>
       <h4>{props.player.name}</h4>
-      <div>vivo: {props.player.alive ? 'Vivo' : 'Morto' }</div>
       <input type="button" value="remove" onClick={() => dispatch(remove(props.player))} />
-      <input type="button" value="kill" onClick={() => dispatch(kill(props.player))} />
-      {/* <input type="button" value="fight" onClick={() => ''} /> */}
+      <input type="button" value={props.player.alive ? 'kill' : 'not dead'} onClick={() => dispatch(kill(props.player))} />
+      <input type="button" value="fight" onClick={() => dispatch(fight(props.player))} />
     </div>
-    
   );
 }
 
