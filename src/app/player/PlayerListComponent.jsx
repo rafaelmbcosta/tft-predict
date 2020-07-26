@@ -2,19 +2,31 @@ import React from 'react'
 import PlayerComponent from './PlayerComponent';
 import { useSelector } from 'react-redux';
 import { selectPlayer } from './duck/slice';
-import { Typography } from '@material-ui/core'
+import { Typography, Card, Divider } from '@material-ui/core';
+import styled from 'styled-components';
+
+const StyledCard = styled(Card)`
+  margin-top: 40px;
+  padding-top: 5px;
+`;
 
 const PlayerListComponent = () => {
 
   const players = useSelector(selectPlayer);
 
   return(
-    <div>
-      <Typography variant="h4">PLAYERS</Typography>
+    <StyledCard>
+      <Typography variant="h6">PLAYERS</Typography>
       { players.map(player => {
-        return (<PlayerComponent player={player} key={player.id}> </PlayerComponent>)
-      }) }
-    </div>
+          return (
+            <div key={player.id}>
+              <Divider />
+              <PlayerComponent player={player}> </PlayerComponent>
+            </div>
+          );
+        })
+      }
+    </StyledCard>
   )
 }
 

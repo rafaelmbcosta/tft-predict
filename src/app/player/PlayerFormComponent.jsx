@@ -27,13 +27,14 @@ export function PlayerForm() {
                 <Grid item xs={11}>
                   <TextField
                     fullWidth
+                    placeholder="Type Player Name"
                     name="playerName"
                     inputRef={register({required: true, minLength: 2})}
                   />
                 </Grid>
                 <Grid item xs={1} >
                   <Button
-                    color="primary"
+                    color="secondary"
                     type="submit"
                     variant="contained"
                     value="ADD PLAYER">
