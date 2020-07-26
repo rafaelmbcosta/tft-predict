@@ -8,13 +8,13 @@ import { Typography, Container, Grid } from '@material-ui/core';
 
 function App() {
   return (
-    <Container>
-      <Grid container direction="column" spacing={3} justify="center" alignItems="center">
-        <Grid item><Typography variant="h3">PREDICT </Typography></Grid> 
-        <Grid item><PlayerForm /></Grid>
-        <Grid item><PredictionList /></Grid>
-        <Grid item><PlayerListComponent /></Grid>
-        <Grid item><HistoryComponent /></Grid>
+    <Container justify="center" className="App">
+      <Typography variant="h3">PREDICT </Typography>
+      <PlayerForm></PlayerForm>
+      <Grid container justify="center" direction="row" spacing={3}>
+        <Grid item xs={4}><PredictionList /></Grid>
+        <Grid item xs={4}><PlayerListComponent /></Grid>
+        <Grid item xs={4}><HistoryComponent /></Grid>
       </Grid>
     </Container>
   );
