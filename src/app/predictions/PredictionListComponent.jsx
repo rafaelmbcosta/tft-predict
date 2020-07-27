@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectAlive } from '../player/duck/slice'
 import { selectHistory } from '../history/duck/slice'
+import { StyledCard, StyledBox } from '../ui-components/styledComponents';
+import { Typography, Divider } from '@material-ui/core';
 
 const predict = (playerList, historyList) => {
   let lastHistory = historyList.slice(0, 4).map(item => item.playerId);
@@ -14,15 +16,17 @@ const PredictionListComponent = () => {
   const player = useSelector(selectAlive);
   
   return(
-    <div>
-      <h4>Prediction</h4>
-
-      <ol>
+    <StyledCard>
+      <Typography variant="h6">POSSIBLE PLAYERS</Typography>
+      <Divider />
         { predict(player, history).map(element => {
-          return <li key={element.id}>{element.name}</li>;
+          return (
+            <StyledBox justify="center" key={element.id}>
+              <Typography variant="body1">{element.name}</Typography>
+            </StyledBox>
+          );
         }) }
-      </ol>
-    </div>
+    </StyledCard>
   )
 }
 

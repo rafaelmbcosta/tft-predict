@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { add } from './duck/slice';
 import './duck/style.css';
 import { useForm } from 'react-hook-form';
-import { Button, TextField, Grid, Typography, Card, CardContent, Container } from '@material-ui/core';
+import { Button, TextField, Grid, Typography, Card, CardContent, Box } from '@material-ui/core';
 
 export function PlayerForm() {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export function PlayerForm() {
   }
 
   return (
-    <Container className="fullWidth">
+    <Box className="fullWidth">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Card>
             <CardContent>
@@ -49,6 +49,6 @@ export function PlayerForm() {
           </Grid>
         </Card>
       </form>
-    </Container>
+    </Box>
   );
 }

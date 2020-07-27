@@ -39,12 +39,14 @@ function App() {
         </Toolbar>
       </AppBar>
       <StyledContainer justify="center" mt={5} align="center" className="App">
-        <PlayerForm></PlayerForm>
-        <Grid container justify="center" direction="row" spacing={3}>
-          <Grid item xs={4}>{ renderPredictions() }</Grid>
-          <Grid item xs={4}>{ renderPlayers() }</Grid>
-          <Grid item xs={4}>{ renderHistory() }</Grid>
-        </Grid>
+        <Container>
+          <PlayerForm></PlayerForm>
+          <Grid container justify="center" direction="row" spacing={3}>
+            <Grid item xs={4}>{ renderPredictions() }</Grid>
+            <Grid item xs={4}>{ renderPlayers() }</Grid>
+            <Grid item xs={4}>{ renderHistory() }</Grid>
+          </Grid>
+        </Container>
       </StyledContainer>
     </ThemeProvider>
   );

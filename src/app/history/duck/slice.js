@@ -20,6 +20,6 @@ export const historySlice = createSlice({
 
 export const { fight, remove } = historySlice.actions;
 
-export const selectHistory = state => [...state.history.value].reverse();
+export const selectHistory = state => [...state.history.value.slice(-4)].reverse();
 
 export default historySlice.reducer;

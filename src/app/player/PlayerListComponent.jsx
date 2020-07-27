@@ -2,13 +2,8 @@ import React from 'react'
 import PlayerComponent from './PlayerComponent';
 import { useSelector } from 'react-redux';
 import { selectPlayer } from './duck/slice';
-import { Typography, Card, Divider } from '@material-ui/core';
-import styled from 'styled-components';
-
-const StyledCard = styled(Card)`
-  margin-top: 40px;
-  padding-top: 5px;
-`;
+import { Typography, Divider } from '@material-ui/core';
+import { StyledCard } from '../ui-components/styledComponents'
 
 const PlayerListComponent = () => {
 
