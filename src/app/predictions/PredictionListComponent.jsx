@@ -4,7 +4,7 @@ import { selectAlive } from '../player/duck/slice'
 import { selectHistory } from '../history/duck/slice'
 
 const predict = (playerList, historyList) => {
-  let lastHistory = historyList.slice(-4).map(item => item.playerId);
+  let lastHistory = historyList.slice(0, 4).map(item => item.playerId);
   let possible = playerList.filter(player => (!lastHistory.includes(player.id) && player.alive));
   if (possible.length === 0) { return playerList };
   return possible
@@ -16,6 +16,7 @@ const PredictionListComponent = () => {
   return(
     <div>
       <h4>Prediction</h4>
+
       <ol>
         { predict(player, history).map(element => {
           return <li key={element.id}>{element.name}</li>;

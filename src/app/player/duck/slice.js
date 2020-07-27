@@ -1,11 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-let counter = 0;
+let counter = 7;
 
 export const playerSlice = createSlice({
   name: 'player',
   initialState: {
-    value: []
+    value: [
+      {name: "Rafael", alive: true, id: 0},
+      {name: "Pedro", alive: true, id: 1},
+      {name: "Zoranildo", alive: true, id: 2},
+      {name: "Zanatinha", alive: true, id: 3},
+      {name: "Fabio", alive: true, id: 4},
+      {name: "Juim", alive: true, id: 5},
+      {name: "Perdiga", alive: true, id: 6}
+    ]
   },
   reducers: {
     add: (state, action) => {

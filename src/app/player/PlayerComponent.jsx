@@ -20,12 +20,30 @@ const StyledTypography = styled(Typography)`
 
 const StyledBox = styled(Box)`
   margin: 10px;
+  padding-top: 5px;
   padding-right: 10px;
 `;
 
 const PlayerComponent = (props) => {
 
   const dispatch = useDispatch();
+  
+  const removeButton = (player) => {
+    if (player.alive) {
+      return(
+        <IconButton
+        color="primary" 
+        onClick={() => dispatch(remove(props.player)) } 
+      >
+        <Delete></Delete>
+      </IconButton>
+      )
+    }
+  }
+
+  const dashed = (player) => {
+    if (!player.alive) { return 'dead' }
+  }
 
   const fightButton = (player) => {
     if(player.alive) {
@@ -43,24 +61,26 @@ const PlayerComponent = (props) => {
   return(
     <StyledBox>
       <Grid direction="row" justify="space-between" align="center" container spacing={2}>
-        <StyledTypography align="center">{props.player.name}</StyledTypography>
-        <Box>
-          {/* text-decoration: line-through; when its dead, findout how to dynamicaly put style or class */}
-          <StyledButton
-            size="small"
-            variant="contained"
-            color="primary"
-            onClick={() => dispatch(kill(props.player))}
-          >
-            {props.player.alive ? 'Kill' : 'Not dead'}
-          </StyledButton>
-          <IconButton
-            color="primary" 
-            onClick={() => dispatch(remove(props.player)) } 
-            >
-            <Delete></Delete>
-          </IconButton>
-          { fightButton(props.player)}
+        <StyledTypography className={dashed(props.player)} align="center">{props.player.name}</StyledTypography>
+        <Box xs={12}>
+          <Grid container justify="space-between" direction="row">
+            <Grid item xs={6}>
+              <StyledButton
+                size="small"
+                variant="contained"
+                color={ props.player.alive ? 'primary' : 'secondary' }
+                onClick={() => dispatch(kill(props.player))}
+              >
+                {props.player.alive ? 'Kill' : 'Alive'}
+              </StyledButton>
+            </Grid>
+            <Grid item xs={3}>
+              { removeButton(props.player) }
+            </Grid>
+            <Grid item xs={3}>
+              { fightButton(props.player)}
+            </Grid>
+          </Grid>
         </Box>
       </Grid>
     </StyledBox>
