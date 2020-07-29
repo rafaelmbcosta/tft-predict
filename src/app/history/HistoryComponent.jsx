@@ -16,7 +16,6 @@ const HistoryComponent = () => {
       })}
     </StyledCard>
   )
-
 }
 
 export default HistoryComponent
