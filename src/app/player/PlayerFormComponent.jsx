@@ -26,6 +26,7 @@ export function PlayerForm() {
               <Grid container direction="row" spacing={1} justify="center" alignItems="center">
                 <Grid item xs={11}>
                   <TextField
+                    className="cy-playerName"
                     fullWidth
                     placeholder="Type Player Name"
                     name="playerName"
